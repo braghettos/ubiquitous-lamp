@@ -78,7 +78,7 @@ spec:
       name: Release Orchestration
       action: krateo:ro-insiel
       input:
-        folder: "{{ steps.template.output.folder }}"
+        folder: "{{ steps.template.output }}"
         host: "{{ parameters.repoUrl }}"
 
   output:
