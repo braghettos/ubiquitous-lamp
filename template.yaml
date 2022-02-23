@@ -75,10 +75,10 @@ spec:
     #     catalogInfoPath: "/catalog-info.yaml"
 
     - id: krateo:ro-insiel
-      name: ro-insiel
+      name: Release Orchestration
       action: catalog:register
       input:
-        repoUrl: "{{ parameters.repoUrl }}"
+        host: "{{ parameters.repoUrl }}"
 
   output:
     remoteUrl: "{{ steps.publish.output.remoteUrl }}"
