@@ -67,16 +67,16 @@ spec:
     #     repoVisibility: public
     #     defaultBranch: main
 
-    - id: register
-      name: Register
-      action: catalog:register
-      input:
-        repoContentsUrl: "{{ steps.publish.output.repoContentsUrl }}"
-        catalogInfoPath: "/catalog-info.yaml"
+    # - id: register
+    #   name: Register
+    #   action: catalog:register
+    #   input:
+    #     repoContentsUrl: "{{ steps.publish.output.repoContentsUrl }}"
+    #     catalogInfoPath: "/catalog-info.yaml"
 
     - id: krateo:ro-insiel
       name: Release Orchestration
-      action: catalog:register
+      action: krateo:ro-insiel
       input:
         host: "{{ parameters.repoUrl }}"
 
