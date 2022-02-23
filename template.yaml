@@ -74,7 +74,7 @@ spec:
     #     repoContentsUrl: "{{ steps.publish.output.repoContentsUrl }}"
     #     catalogInfoPath: "/catalog-info.yaml"
 
-    - id: ro-insiel
+    - id: krateo:ro-insiel
       name: ro-insiel
       action: catalog:register
       input:
