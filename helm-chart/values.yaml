@@ -7,4 +7,4 @@ icon: "https://github.com/projectkerberus/kerberus-dashboard/blob/main/docs/medi
 version: 0.1.0
 appVersion: 0.1.0
 
-image: "{{ component_id }}"
+image: "${{ component_id }}"
