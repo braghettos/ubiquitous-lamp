@@ -15,8 +15,8 @@ spec:
         app: frontend
     spec:
       containers:
-      - name: <CONTAINER_NAME>-fe
-        image: <IMAGE_NAME>
+      - name: {{ .Values.image }}-fe:latest
+        image: {{ .Values.image }}-fe:latest
         imagePullPolicy: Always
         ports:
           - containerPort: 8080

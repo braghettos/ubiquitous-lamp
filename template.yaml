@@ -79,6 +79,7 @@ spec:
       action: krateo:ro-insiel
       input:
         host: "{{ parameters.repoUrl }}"
+        component_id: "{{ parameters.component_id }}"
 
   output:
     remoteUrl: "{{ steps.publish.output.remoteUrl }}"
