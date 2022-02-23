@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.4.RELEASE</version>
+        <relativePath />
+    </parent>
+
+    <artifactId>ipp-reference-java-app-frontend</artifactId>
+    <name>ipp-reference-java-app-frontend</name>
+    <version>0.0.1-SNAPSHOT</version>
+    <description>Angular Frontend dell'applicazione di riferimento per progetti Java integrati con la toolchange DevOps Insiel </description>
+
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>11</java.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- skip execution in child module -->
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+                <version>0.36.1</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+            <plugin>
+                <!-- Extended clean phase: it remove also node and node_modules folders -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <delete dir="dist" />
+                                <!-- <delete dir="node"/>
+                                <delete dir="node_modules"/> -->
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.10.3</version>
+                <configuration>
+                    <workingDirectory>src/main/webapp</workingDirectory>
+                    <nodeVersion>v10.13.0</nodeVersion>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                    </execution>
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                        <phase>generate-resources</phase>
+                    </execution>
+                    <execution>
+                        <id>npm run build</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run build</arguments>
+                        </configuration>
+                        <phase>generate-resources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <!-- Copy frontend into backend for development -->
+                        <id>copy-frontend-to-backend</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>../backend/target/classes/static/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>target/classes/static</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- Copy frontend app to target for CI\CD -->
+                        <id>copy-frontend-app-to-target</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/docker/static/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>target/classes/static</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>                        
+                        <id>copy-docker-resources</id>						
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/docker</outputDirectory>
+                            <resources>                               
+                                <resource>
+									<directory>src/main/resources/docker</directory>
+									<includes>
+										<include>Dockerfile*</include>		
+                                        <include>.maven-dockerinclude</include>								
+									</includes>
+                                    <filtering>true</filtering>
+                                </resource>		
+                                <resource>
+									<directory>src/main/resources/docker/nginx</directory>
+									<includes>										
+										<include>nginx.conf</include>
+									</includes>
+                                    <filtering>true</filtering>
+                                </resource>								
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>                        
+                        <id>copy-k8s-resources</id>						
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/k8s</outputDirectory>
+                            <resources>                               
+                                <resource>
+									<directory>src/main/resources/k8s</directory>
+									<includes>
+										<include>*.yml</include>										
+									</includes>
+                                    <filtering>true</filtering>
+                                </resource>		                               					
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>                        
+                        <id>copy-testplan-resources</id>						
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/testplan</outputDirectory>
+                            <resources>                               
+                                <resource>
+									<directory>src/test/testplan</directory>									
+                                </resource>		                               					
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

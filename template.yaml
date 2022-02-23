@@ -1,0 +1,79 @@
+apiVersion: backstage.io/v1beta2
+kind: Template
+metadata:
+  name: ubiquitous-lamp
+  title: ubiquitous-lamp
+  description: Create a ubiquitous-lamp
+  tags:
+    - java
+spec:
+  owner: mauro.sala@kiratech.it
+  type: service
+
+  # these are the steps which are rendered in the frontend with the form input
+  parameters:
+    - title: App values
+      required:
+        - component_id
+        - description
+        - owner
+      properties:
+        component_id:
+          title: Name
+          type: string
+          description: Unique name of the component
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this service does.
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.insiel.it
+              - github.com
+
+  # here's the steps that are executed in series in the scaffolder backend
+  steps:
+    - id: template
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          component_id: "{{ parameters.component_id }}"
+          description: "{{ parameters.description }}"
+          owner: "{{ parameters.owner }}"
+          destination: "{{ parseRepoUrl parameters.repoUrl }}"
+
+    # - id: publish
+    #   name: Publish
+    #   action: publish:github
+    #   input:
+    #     allowedHosts: ["github.com", "github.insiel.it"]
+    #     description: "This is a Demo App with name {{ parameters.component_id }}"
+    #     repoUrl: "{{ parameters.repoUrl }}"
+    #     repoVisibility: public
+    #     defaultBranch: main
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: "{{ steps.publish.output.repoContentsUrl }}"
+        catalogInfoPath: "/catalog-info.yaml"
+
+  output:
+    remoteUrl: "{{ steps.publish.output.remoteUrl }}"
+    entityRef: "{{ steps.register.output.entityRef }}"

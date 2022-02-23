@@ -1,0 +1,352 @@
+{
+  "id": "edb35d22-669c-4edf-af75-6cff24b8a310",
+  "version": "2.0",
+  "name": "Java reference App",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "0ae4be41-0ba6-4acc-bb14-d1534c6f3d9c",
+    "name": "check-title",
+    "commands": [{
+      "id": "a7c87e73-0d44-4ed4-9b3a-8b348ce87187",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e8b4614f-edc1-40a9-9045-acdf37561137",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "2116x1224",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "551c2e1d-e559-4738-a410-c56e6cc8f02d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-nav > .nav-item:nth-child(1) span",
+      "targets": [
+        ["css=.navbar-nav > .nav-item:nth-child(1) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Comuni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8ea74bac-5b2a-450a-835b-d4a1f13fe28b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(2) span",
+      "targets": [
+        ["css=.nav-item:nth-child(2) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li[2]/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li[2]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Servizi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "df44de94-4aff-4859-9143-6ffce06e8fed",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-nav > .nav-item:nth-child(1) span",
+      "targets": [
+        ["css=.navbar-nav > .nav-item:nth-child(1) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Comuni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a085de72-0624-47bf-8e69-370e7d0a5bef",
+      "comment": "",
+      "command": "click",
+      "target": "css=.it-header-center-content-wrapper .no_toc:nth-child(1)",
+      "targets": [
+        ["css=.it-header-center-content-wrapper .no_toc:nth-child(1)", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Reference Java App')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e643d4ee-3d35-4b6d-9c4c-327ab8b4b515",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Reference Java App - Progetto Ingegnerizzazione Processo",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1003d105-1eee-4e6f-bf2c-677eedad6467",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "025e4414-443e-436e-9df9-93dc65d3f66d",
+    "name": "check-homepage",
+    "commands": [{
+      "id": "f219911d-a842-4cc2-99cb-d676e536cc7f",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dbbfcc2b-01c8-4942-bc65-40e1dba1c4f0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "2116x1224",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b5b23c1c-cce7-4258-84f7-7f0cfba80284",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Lorem Ipsum')]", "xpath:innerText"]
+      ],
+      "value": "Lorem Ipsum"
+    }, {
+      "id": "407ec59d-b64e-4175-bd87-76fb57527dcf",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "7d082ff8-2668-44df-bb60-e48bb5643c51",
+    "name": "check-page-comuni",
+    "commands": [{
+      "id": "d74754be-1e00-47a9-9132-df59e67acdb4",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dad655be-212b-4d87-ad2f-7ed31b0d6daf",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1892x918",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5d7bb2c9-d1f4-449f-ba6f-9ca05a12d628",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-nav > .nav-item:nth-child(1) span",
+      "targets": [
+        ["css=.navbar-nav > .nav-item:nth-child(1) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Comuni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "74910fd8-cc66-4cc6-92c4-2fa7829a3ee0",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//section[@id='intro']/div/div/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Comuni')]", "xpath:innerText"]
+      ],
+      "value": "Comuni"
+    }, {
+      "id": "c1c641ba-3185-4602-8002-43aa3331f2fd",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "764cc4b8-0dbe-4d6e-a0d1-e83d671f725d",
+    "name": "check-page-servizi",
+    "commands": [{
+      "id": "e5823115-5d57-4c9d-b399-764bfa043bfa",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9324870b-b139-4d31-acee-e752bb47f667",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1892x918",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8f89d1c9-5d93-46a6-9041-54b2591a1c39",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(2) span",
+      "targets": [
+        ["css=.nav-item:nth-child(2) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li[2]/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li[2]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Servizi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3b7ea329-45c4-4359-89be-2a6e4ac03601",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//section[@id='intro']/div/div/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Servizi')]", "xpath:innerText"]
+      ],
+      "value": "Servizi"
+    }, {
+      "id": "a63e6609-3e94-4fe7-834a-3b8f199bc942",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "1e61cc26-b0d4-41c5-822a-0e2e574b7f0d",
+    "name": "check-page-novità",
+    "commands": [{
+      "id": "f20948ac-0f71-4de4-800e-4a3c71b326fc",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7d04ae59-70a1-418d-9cef-c345bd190032",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1892x918",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "44b36f6c-9112-4167-84d5-70ec521f260f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(3) span",
+      "targets": [
+        ["css=.nav-item:nth-child(3) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li[3]/a/span", "xpath:idRelative"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Novità')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "595ba98e-1ba9-4f56-8890-d9d8b6bcadd5",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//section[@id='intro']/div/div/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Novità')]", "xpath:innerText"]
+      ],
+      "value": "Novità"
+    }, {
+      "id": "f4ae5742-8f1b-46c3-bb79-13d68c5e204f",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "8ec01edd-5e2a-4049-9a60-38aefaae9b38",
+    "name": "check-comuni-ordine",
+    "commands": [{
+      "id": "a6b0223b-c74d-4cd9-ad01-43b7a68afb13",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d7abec2e-c981-4fea-a5a7-acbeda11016b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1892x918",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "79e5d589-ffc2-4fbd-84b5-f5681fa98353",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-nav > .nav-item:nth-child(1) span",
+      "targets": [
+        ["css=.navbar-nav > .nav-item:nth-child(1) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Comuni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7197984a-23d2-4fbb-9837-d93812107c67",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//section[@id='intro']/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Aiello del Friuli')]", "xpath:innerText"]
+      ],
+      "value": "Aiello del Friuli"
+    }, {
+      "id": "77e21d4d-db9e-45ed-8892-9f04a3d9eb88",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=tr:nth-child(120) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(120) > td:nth-child(2)", "css:finder"],
+        ["xpath=//section[@id='intro']/div/table/tbody/tr[120]/td", "xpath:idRelative"],
+        ["xpath=//tr[120]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Pocenia')]", "xpath:innerText"]
+      ],
+      "value": "Pocenia"
+    }, {
+      "id": "59c45a7f-98c3-41fc-a229-4740656531bb",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=tr:nth-child(215) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(215) > td:nth-child(2)", "css:finder"],
+        ["xpath=//section[@id='intro']/div/table/tbody/tr[215]/td", "xpath:idRelative"],
+        ["xpath=//tr[215]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Zuglio')]", "xpath:innerText"]
+      ],
+      "value": "Zuglio"
+    }, {
+      "id": "580074bb-3bb0-4492-adf5-5641b9c04e48",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f6793b13-572f-424c-b50e-b82e15aaec26",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 30000,
+    "tests": ["0ae4be41-0ba6-4acc-bb14-d1534c6f3d9c", "025e4414-443e-436e-9df9-93dc65d3f66d", "7d082ff8-2668-44df-bb60-e48bb5643c51", "1e61cc26-b0d4-41c5-822a-0e2e574b7f0d", "764cc4b8-0dbe-4d6e-a0d1-e83d671f725d", "8ec01edd-5e2a-4049-9a60-38aefaae9b38"]
+  }],
+  "urls": ["<APPLICATION_URL>"],
+  "plugins": []
+}

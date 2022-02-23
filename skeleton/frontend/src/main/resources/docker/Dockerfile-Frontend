@@ -1,0 +1,11 @@
+# [Choice] Nginx version: 1.19.7
+#ARG VARIANT="1.19.7"
+FROM bitnami/nginx:1.19.9
+
+# Copy frontend
+COPY ./static /app
+# Copy the default nginx.conf
+COPY ./nginx.conf /opt/bitnami/nginx/conf/nginx.conf
+
+# Expose port 80 to the outside world
+EXPOSE 8080/tcp

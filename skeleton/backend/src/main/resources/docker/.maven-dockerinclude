@@ -1,0 +1,5 @@
+org.jacoco.agent-0.8.7.jar
+application/**
+dependencies/**
+snapshot-dependencies/**
+spring-boot-loader/**

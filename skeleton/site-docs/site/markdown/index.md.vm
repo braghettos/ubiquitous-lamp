@@ -1,0 +1,21 @@
+#[[##]]# Benvenuto nel progetto $context.get('site.project.name').
+
+Questo progetto nasce dalle seguenti necessità:
+
+1. Consolidare, configurare e validare la toolchain DevOps con tecnologia Java\Maven
+2. Creare un template di riferimento per progetti Java
+3. Mostrare come integrarsi con i principali componenti trasversali
+
+Seguirà un progetto anche per l'ambiente .NET.
+
+Il progetto è stato realizzato nell'ambito dell'Ingegnerizzazione Processo Produttivo.
+
+Le persone che hanno contribuito al progetto sono:
+
+- Andrea Soranzio
+- Francesco Benincasa
+- Alessio Bani
+- Mauro Cortese
+- Claudio Quagliaro
+
+Qualsiasi suggerimento è ben venuto. Potete utilizzare Jira ($context.get('jiar.http')/$context.get('jira.project')) per le segnalazioni di errori o migliorie.

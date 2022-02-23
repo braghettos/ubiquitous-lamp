@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project 
+    xmlns="http://maven.apache.org/DECORATION/1.8.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd" 
+    name="IPP - Reference Java Application">
+
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.9</version>
+    </skin>
+
+    <custom>
+        <fluidoSkin>                        
+            <topBarEnabled>false</topBarEnabled>
+            <sideBarEnabled>true</sideBarEnabled>
+        </fluidoSkin>
+    </custom>
+
+    <bannerLeft>
+        <name>Insiel spa - IPP - Reference Java Application</name>
+        <src>images/logo-insiel.jpeg</src>
+        <width>200</width>
+        <height>94</height>
+        <href>https://www.insiel.it/</href>        
+    </bannerLeft>
+
+    <bannerRight>
+        <src>images/paperinik.jpeg</src>
+        <width>200</width>
+        <height>94</height>
+    </bannerRight>
+
+    <version position="right"/>
+    <publishDate position="right"/>
+   
+    <poweredBy>
+        <logo name="Maven" href="https://maven.apache.org/" img="https://maven.apache.org/images/logos/maven-feather.png"/>
+    </poweredBy>
+
+    <body>
+        
+        <links>
+            <!-- <item name="Jenkins" href="${jenkins.http}/${this.id}" /> -->
+        </links>
+
+        <breadcrumbs>
+            <item name="IPP" href="#"/>
+            <item name="Reference Applications" href="#"/>
+            <item name="Java" href="index.html"/>
+        </breadcrumbs>
+
+        <menu name="">
+            <item name="Welcome" href="index.html"/>
+        </menu>
+
+        <menu name="About ${project.name}">
+            <item name="Overview" href="overview.html"/>
+            <item name="Goals" href="goals.html"/>
+            <item name="Features" href="features.html"/>
+            <item name="Release Notes" href="release_notes.html" /> 
+            <item name="Configuration" href="configuration.html" />
+            <item name="Build" href="build.html" />
+            <item name="Deploy" href="deploy.html" />
+            <item name="Test" href="test.html" />
+            <item name="FAQ" href="faq.html" />           
+        </menu>
+
+        <!-- <menu name="Test Reports">
+            <item name="Cucumber" href="cucumber/overview-features.html"/>
+            <item name="Coverage" href="test-coverage/index.html"/>
+            <item name="Sonarqube" href="${sonarqube.http}?id=${project.name}" />
+        </menu> -->
+
+        <menu ref="reports"/>
+
+        <menu ref="parent"/>
+
+        <!-- <menu ref="modules"/> -->
+
+        <footer><![CDATA[Insiel spa - All rights reserved.]]></footer>
+ 
+    </body>
+</project>

@@ -1,0 +1,29 @@
+FROM node:10-alpine
+
+ENV URL_GRID=http://chromedriver:4444/wd/hub
+ENV URL_APP=http://frontend:8080
+
+LABEL Author="Nikita Gryzlov <nixel2007@gmail.com>"
+
+RUN npm install -g selenium-side-runner
+
+ADD docker-entrypoint.sh /opt/bin/docker-entrypoint.sh
+RUN chmod +x /opt/bin/docker-entrypoint.sh
+
+
+RUN mkdir /sides
+RUN mkdir /out
+RUN mkdir /selenium
+
+RUN chown 1000 /selenium
+RUN chown 1000 /out
+RUN chown 1000 /sides
+
+WORKDIR /selenium
+
+USER 1000
+
+VOLUME [ "/sides" ]
+VOLUME [ "/out" ]
+
+CMD "/opt/bin/docker-entrypoint.sh"

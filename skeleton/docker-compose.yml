@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+
+  frontend:
+    image: "@project.groupId@/@project.artifactId@-frontend:@project.version@"
+    build:
+      context: ../frontend/target/docker/
+      dockerfile: Dockerfile-Frontend
+    #  args:                
+        # Update the VARIANT arg to pick a Java version: 15, 17
+    #    VARIANT: "1.19.7"               
+    # Ports exposes (external:internal)
+    ports:
+      - 8080:8080
+
+  backend:
+    image: "@project.groupId@/@project.artifactId@-backend:@project.version@"
+    build:
+      context: ../backend/target/docker/
+      dockerfile: Dockerfile-Backend
+    #  args:
+        # Update the VARIANT arg to pick a Java version: 15, 17
+    #    VARIANT: "17"                   
+    # Ports exposes (external:internal)
+    ports:
+      - 8081:8080
+ 

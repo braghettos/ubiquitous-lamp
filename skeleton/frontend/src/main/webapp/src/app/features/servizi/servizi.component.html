@@ -1,0 +1,421 @@
+<section id="briciole" class="container px-4 my-4">
+  <div class="row">
+    <div class="col px-lg-4">
+      <nav aria-label="breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a routerLink="">Home</a><span
+            class="separator">/</span>
+          </li>
+          <li aria-current="page" class="breadcrumb-item active">
+            Servizi
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</section>
+<section id="intro" class="container px-4 my-4">
+  <div class="row">
+    <div class="col-lg-7 px-lg-4 py-lg-2">
+      <h1>Servizi</h1>
+      <p>Servizi... Donec in consequat nunc. Duis semper fermentum lacus, ac condimentum justo auctor a. Nam erat erat, porta vel
+        pharetra in, ullamcorper vel turpis.</p>
+      <div class="form-group mt-5">
+        <form>
+          <input id="ricerca-amministrazione" type="search">
+          <label for="ricerca-amministrazione" style="width: auto;">Cerca contenuti in
+            "Servizi"</label>
+          <span aria-hidden="true" class="autocomplete-icon">
+              <svg class="icon icon-sm"><use
+                xlink:href="svg/sprite.svg#it-search"></use></svg>
+            </span>
+        </form>
+      </div>
+      <app-commons-filtri></app-commons-filtri>
+    </div>
+    <div class="col-lg-4 offset-lg-1 pt-5 pt-lg-2">
+      <div class="link-list-wrapper">
+        <ul class="link-list">
+          <li>
+            <h3 id="heading-senza-link">Tutti i servizi</h3>
+          </li>
+          <li>
+            <a class="list-item" routerLink="">Anagrafe e stato civile</a>
+          </li>
+          <li>
+            <a class="list-item" routerLink="">Cultura e tempo libero</a>
+          </li>
+          <li>
+            <a class="list-item" routerLink="">Vita lavorativa</a>
+          </li>
+          <li>
+            <a class="list-item" routerLink="">Attività produttiva e commercio</a>
+          </li>
+          <li>
+            <a class="list-item" routerLink="">Appalti pubblici</a>
+          </li>
+          <li>
+            <a class="list-item" routerLink="">Catasto e urbanistica</a>
+          </li>
+          <li>
+            <a class="list-item large medium left-icon" href="#altri-servizi" data-toggle="collapse"
+               aria-expanded="false" aria-controls="altri-servizi">
+              <svg class="icon icon-primary right">
+                <use
+                  xlink:href="svg/sprite.svg#it-more-items"></use>
+              </svg>
+            </a>
+            <ul class="link-sublist collapse px-0" id="altri-servizi">
+              <li>
+                <a class="list-item" routerLink="">Turismo</a>
+              </li>
+              <li>
+                <a class="list-item" routerLink="">Mobilità e trasporti</a>
+              </li>
+              <li>
+                <a class="list-item" routerLink="">Educazione e formazione</a>
+              </li>
+              <li>
+                <a class="list-item" routerLink="">Giustizia e sicurezza pubblica</a>
+              </li>
+              <li>
+                <a class="list-item" routerLink="">Tributi e finanze</a>
+              </li>
+              <li>
+                <a class="list-item" routerLink="">Ambiente</a>
+              </li>
+              <li>
+                <a class="list-item" routerLink="">Salute, benessere e assistenza</a>
+              </li>
+              <li>
+                <a class="list-item" routerLink="">Autorizzazioni</a>
+              </li>
+              <li>
+                <a class="list-item" routerLink="">Agricoltura</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="list-item medium" href="#tutti-i-servizi">Tutti i servizi</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<app-commons-evidenza></app-commons-evidenza>
+<section id="tutti-i-servizi">
+  <div class="py-5">
+    <div class="container px-4">
+      <div class="row">
+        <div class="col">
+          <h3 class="mb-4 text-primary">Tutti i servizi</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Anagrafe e stato civile</h5>
+                <p class="card-text">Anagrafe e stato civile... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Cultura e tempo libero</h5>
+                <p class="card-text">Cultura e tempo libero... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Vita lavorativa</h5>
+                <p class="card-text">Vita lavorativa... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Attività produttiva e commercio</h5>
+                <p class="card-text">Attività produttiva e commercio... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Appalti pubblici</h5>
+                <p class="card-text">Appalti pubblici... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Catasto e urbanistica</h5>
+                <p class="card-text">Catasto e urbanistica...  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Turismo</h5>
+                <p class="card-text">Turismo... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Mobilità e trasporti</h5>
+                <p class="card-text">Mobilità e trasporti... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Educazione e formazione</h5>
+                <p class="card-text">Educazione e formazione... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Giustizia e sicurezza pubblica</h5>
+                <p class="card-text">Giustizia e sicurezza pubblica... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Tributi e finanze</h5>
+                <p class="card-text">Tributi e finanze... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Ambiente</h5>
+                <p class="card-text">Ambiente... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Salute, benessere e assistenza</h5>
+                <p class="card-text">Salute, benessere e assistenza... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Autorizzazioni</h5>
+                <p class="card-text">Autorizzazioni... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title big-heading">Agricoltura</h5>
+                <p class="card-text">Agricoltura... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+                <a class="read-more" routerLink="">
+                  <span class="text">Leggi di più</span>
+                  <svg class="icon">
+                    <use
+                      xlink:href="svg/sprite.svg#it-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-commons-argomenti></app-commons-argomenti>
+</section>

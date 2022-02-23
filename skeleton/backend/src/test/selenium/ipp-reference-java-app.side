@@ -1,0 +1,424 @@
+{
+  "id": "4c53e52a-299e-48d0-a5ba-ea811c75d7b7",
+  "version": "2.0",
+  "name": "ipp-reference-java-app",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "e6c51dad-4e4e-4e3a-b7a1-8df33c9a52d2",
+    "name": "comune test",
+    "commands": [{
+      "id": "8412532b-9ef1-41bb-bb2c-279bc332e781",
+      "comment": "",
+      "command": "open",
+      "target": "/static/index.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0ad32e53-e03c-46e5-9629-196188618f95",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1391x746",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ea1fd31a-8039-4ec1-accc-bd5a42acacbb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-nav > .nav-item:nth-child(1) span",
+      "targets": [
+        ["css=.navbar-nav > .nav-item:nth-child(1) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Comuni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "96b05e4e-3995-4dbd-a55d-d2f8a38cdd11",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//section[@id='intro']/div/div/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Comuni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0cd6a7c1-66d2-492e-b39a-57b9f9f03034",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//section[@id='intro']/div/div/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Comuni')]", "xpath:innerText"]
+      ],
+      "value": "Comuni"
+    }, {
+      "id": "3f06e6d7-f99a-491c-932c-024ef686631c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-lg-7",
+      "targets": [
+        ["css=.col-lg-7", "css:finder"],
+        ["xpath=//section[@id='intro']/div/div", "xpath:idRelative"],
+        ["xpath=//section[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "749338a9-3fd1-4d95-bcc9-da5847cedb98",
+      "comment": "",
+      "command": "click",
+      "target": "css=app-comuni",
+      "targets": [
+        ["css=app-comuni", "css:finder"],
+        ["xpath=//app-comuni", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "50215eef-bcc2-4024-a6a7-ec8245bf6343",
+    "name": "servizi test",
+    "commands": [{
+      "id": "435d0ad3-8019-4c51-94ee-edc8ef56aff5",
+      "comment": "",
+      "command": "open",
+      "target": "/static/index.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "92c331d7-832b-481a-8597-8205d65dac5f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1391x746",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3ca6c572-cf42-4d6b-abc9-704630e6f2b2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(2) span",
+      "targets": [
+        ["css=.nav-item:nth-child(2) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li[2]/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li[2]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Servizi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4144c44f-2a79-4cf4-9fb0-ea8a46ce2564",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//section[@id='intro']/div/div/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Servizi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "575d3926-620b-4c66-8157-acf6d40821d5",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//section[@id='intro']/div/div/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Servizi')]", "xpath:innerText"]
+      ],
+      "value": "Servizi"
+    }]
+  }, {
+    "id": "c81e28e2-431e-44a9-877e-ee566597bc16",
+    "name": "selezione del comune di Trieste test",
+    "commands": [{
+      "id": "abe74585-ec26-4d54-860c-e8f97f7c4c47",
+      "comment": "",
+      "command": "open",
+      "target": "/static/index.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ca253689-d9f1-47da-806b-256988430895",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1294x772",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8598506b-17c2-4149-b19e-300bbe28221b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-nav > .nav-item:nth-child(1) span",
+      "targets": [
+        ["css=.navbar-nav > .nav-item:nth-child(1) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Comuni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5426fb6e-2af8-448d-a1b0-1b737f57f74f",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Comuni",
+      "targets": [
+        ["linkText=Comuni", "linkText"],
+        ["css=.active:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/static/comuni')]", "xpath:href"],
+        ["xpath=//div[3]/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Comuni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "586444a7-6520-4196-9f61-e8af7b8f9aad",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "linkText=Comuni",
+      "targets": [
+        ["linkText=Comuni", "linkText"],
+        ["css=.active:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/static/comuni')]", "xpath:href"],
+        ["xpath=//div[3]/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Comuni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1775e9b2-ab9b-4871-8120-4dbea9e6220a",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(200) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(200) > td:nth-child(2)", "css:finder"],
+        ["xpath=//section[@id='intro']/div/table/tbody/tr[200]/td", "xpath:idRelative"],
+        ["xpath=//tr[200]/td", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d2c95761-7fbb-4feb-80de-15200dcf0024",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=tr:nth-child(200) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(200) > td:nth-child(2)", "css:finder"],
+        ["xpath=//section[@id='intro']/div/table/tbody/tr[200]/td", "xpath:idRelative"],
+        ["xpath=//tr[200]/td", "xpath:position"]
+      ],
+      "value": "Trieste"
+    }]
+  }, {
+    "id": "9b7e55bf-863c-445c-b899-92234a98f01e",
+    "name": "test prova",
+    "commands": [{
+      "id": "305822b0-c14b-4713-9623-4a00ae6bc0c2",
+      "comment": "",
+      "command": "open",
+      "target": "/static/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cab6332b-cba5-4586-a97e-7d45f6caf7f7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1391x784",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6446541d-a772-458e-b67f-2547a87ad2a0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-nav > .nav-item:nth-child(1) span",
+      "targets": [
+        ["css=.navbar-nav > .nav-item:nth-child(1) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Comuni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa20d5d5-c35d-48c8-875a-7b2f084fd657",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(55) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(55) > td:nth-child(2)", "css:finder"],
+        ["xpath=//section[@id='intro']/div/table/tbody/tr[55]/td", "xpath:idRelative"],
+        ["xpath=//tr[55]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Drenchia')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f7cf4102-9665-4d4c-8e1c-3e3ac2e605c4",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(55) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(55) > td:nth-child(2)", "css:finder"],
+        ["xpath=//section[@id='intro']/div/table/tbody/tr[55]/td", "xpath:idRelative"],
+        ["xpath=//tr[55]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Drenchia')]", "xpath:innerText"]
+      ],
+      "value": "Drenchia"
+    }, {
+      "id": "fb3ec24c-c9e2-4f8a-afc3-25c44e6fc347",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(56) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(56) > td:nth-child(2)", "css:finder"],
+        ["xpath=//section[@id='intro']/div/table/tbody/tr[56]/td", "xpath:idRelative"],
+        ["xpath=//tr[56]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Duino-Aurisina')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7fa5dd8b-03d7-41d1-8ff1-dc40f092bdbe",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=tr:nth-child(56) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(56) > td:nth-child(2)", "css:finder"],
+        ["xpath=//section[@id='intro']/div/table/tbody/tr[56]/td", "xpath:idRelative"],
+        ["xpath=//tr[56]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Duino-Aurisina')]", "xpath:innerText"]
+      ],
+      "value": "Duino-Aurisina"
+    }, {
+      "id": "cbfb186e-0a4c-46fa-9233-492c14240168",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(2) span",
+      "targets": [
+        ["css=.nav-item:nth-child(2) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li[2]/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li[2]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Servizi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "696dc7e1-01cd-44d9-87db-ea1bc5be476f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(3) span",
+      "targets": [
+        ["css=.nav-item:nth-child(3) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li[3]/a/span", "xpath:idRelative"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Novità')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d83c58c8-c52c-4df3-bd4c-b69085464ef4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(4) span",
+      "targets": [
+        ["css=.nav-item:nth-child(4) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li[4]/a/span", "xpath:idRelative"],
+        ["xpath=//li[4]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Documenti')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ff9966f1-37ce-4c55-aff9-4e706192337b",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.nav-item:nth-child(4) span",
+      "targets": [
+        ["css=.nav-item:nth-child(4) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li[4]/a/span", "xpath:idRelative"],
+        ["xpath=//li[4]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Documenti')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b40e627f-47ec-46f7-8f69-4b0db8a55dd2",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.active > span",
+      "targets": [
+        ["css=.active > span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li[4]/a/span", "xpath:idRelative"],
+        ["xpath=//li[4]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Documenti')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "27134c2e-3f13-4e9d-a0e9-31b57db02541",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(3) span",
+      "targets": [
+        ["css=.nav-item:nth-child(3) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li[3]/a/span", "xpath:idRelative"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Novità')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4fe0b960-f652-461d-abfe-bc13b22909c8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(2) span",
+      "targets": [
+        ["css=.nav-item:nth-child(2) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li[2]/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li[2]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Servizi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0d6b2f61-518f-446f-890e-60fbe7890b89",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.nav-item:nth-child(2) span",
+      "targets": [
+        ["css=.nav-item:nth-child(2) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li[2]/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li[2]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Servizi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "be6557ec-0770-4dd3-822b-2c1cbca95da0",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.active > span",
+      "targets": [
+        ["css=.active > span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li[2]/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li[2]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Servizi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3a42bf2d-b57e-4916-8d94-646c1133fc7a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-nav > .nav-item:nth-child(1) span",
+      "targets": [
+        ["css=.navbar-nav > .nav-item:nth-child(1) span", "css:finder"],
+        ["xpath=//div[@id='nav10']/div[3]/ul/li/a/span", "xpath:idRelative"],
+        ["xpath=//div[3]/ul/li/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Comuni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "d8e3f888-3b72-4eb0-91b1-b7bf3c216176",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["e6c51dad-4e4e-4e3a-b7a1-8df33c9a52d2"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

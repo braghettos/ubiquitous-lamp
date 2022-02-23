@@ -1,0 +1,94 @@
+spring:
+    profiles:
+        active: @spring.profiles.active@
+    security:
+        user:
+            name: admin
+            password: admin            
+            roles: manager
+    liquibase:
+        enabled: false
+
+server:
+    port: 8080
+
+debug: true
+springdoc:
+    api-docs.enabled: true
+    api-docs.path: /v3/api-docs
+    swagger-ui:
+        path: /swagger-ui.html
+        display-request-duration: false
+        tags-sorter: alpha
+        operations-sorter: alpha
+        defaultModelRendering: example
+        doc-expansion: none
+        config-url: /v3/api-docs/swagger-config
+        url: /v3/api-docs
+    
+
+---
+spring:
+    profiles: dev
+    jpa:
+        hibernate:
+            ddl-auto: create
+        database-platform: org.hibernate.dialect.H2Dialect
+    datasource:
+        url: jdbc:h2:mem:testdb
+        driverClassName: org.h2.Driver
+        username: sa
+        password: password
+    h2:
+        console:
+            enabled: true    
+logging:
+    level:
+        ROOT: INFO
+        it.insiel.innovazione.ipp.referenceapp: DEBUG
+    # Disabilitato il logging su file system fino a che non viene gestito il profilo sulla pipeline
+    #file:
+    #  name: application.log
+
+
+---
+spring:
+    profiles: test
+    jpa:
+        hibernate:
+            ddl-auto: create
+        database-platform: org.hibernate.dialect.Oracle10gDialect 
+    datasource:
+        url: jdbc:oracle:thin:@//172.25.98.138:1521/SORA19
+        driverClassName: oracle.jdbc.OracleDriver
+        username: IPPSVIL
+        password: PYS4GIDE  
+logging:
+    level:
+        ROOT: INFO
+        it.insiel.innovazione.ipp.referenceapp: DEBUG
+---
+spring:
+    profiles: collaudo
+    jpa:
+        hibernate:
+            ddl-auto: create
+        database-platform: org.hibernate.dialect.Oracle10gDialect 
+    datasource:
+        url: jdbc:oracle:thin:@//172.25.98.138:1521/CORA19A
+        driverClassName: oracle.jdbc.OracleDriver
+        username: IPPCOLL
+        password: P5DF4UBX 
+logging:
+    level:
+        ROOT: INFO
+        it.insiel.innovazione.ipp.referenceapp: DEBUG
+---
+spring: 
+   profiles: prod
+
+debug: false
+logging:
+    level:
+        ROOT: INFO
+        it.insiel.innovazione.ipp.referenceapp: INFO

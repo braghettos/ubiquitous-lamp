@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.4.RELEASE</version>
+		<relativePath />
+	</parent>
+
+	<groupId>it.insiel.innovazione</groupId>
+	<artifactId>${{values.component_id}}</artifactId>
+	<version>1.0.0</version>
+	<name>${{values.component_id}}</name>
+	<description>Applicazione di riferimento per progetti Java integrati con la toolchange DevOps Insiel </description>
+
+	<packaging>pom</packaging>
+
+	<properties>
+		<java.version>11</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Properties used in site (Site uses only variables defined in properties) -->
+		<site.project.name>${project.name}</site.project.name>
+		<!-- *** Sonar Configuration *** -->
+		<sonar.projectVersion>${project.version}</sonar.projectVersion>
+		<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+		<sonar.sources>${project.basedir}/frontend/src/main/webapp/src</sonar.sources>
+		<sonar.java.binaries>${project.basedir}/target/classes</sonar.java.binaries>
+		<sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
+		<sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/backend/target/jacoco-report/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+		<!-- <sonar.junit.reportPaths>target/surefire-reports,target/failsafe-reports</sonar.junit.reportPaths> -->
+		<sonar.dependencyCheck.htmlReportPath>${project.basedir}/target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
+		<sonar.nodejs.executable>${project.basedir}/frontend/src/main/webapp/node/node</sonar.nodejs.executable>
+		<!-- Plugin versions -->
+		<sonar-maven-plugin.version>3.9.0.2155</sonar-maven-plugin.version>
+		<dependency-check-maven.version>6.5.0</dependency-check-maven.version>
+	</properties>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>${github.http}/Innovazione/ipp-reference-java-app/issues</url>
+	</issueManagement>
+
+	<scm>
+		<connection>scm:git:${github.http}/Innovazione/ipp-reference-java-app.git</connection>
+		<developerConnection>scm:git:${github.git}/Innovazione/ipp-reference-java-app.git</developerConnection>
+		<url>${github.http}/Innovazione/ipp-reference-java-app</url>
+	</scm>
+
+	<organization>
+		<name>Insiel SpA</name>
+		<url>http://www.insiel.it</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>908099</id>
+			<name>Francesco Benincasa</name>
+			<email>francesco.benincasa@insiel.it</email>
+		</developer>
+		<developer>
+			<id>908538</id>
+			<name>Alessio Bani</name>
+			<email>alessio.bani@insiel.it</email>
+		</developer>
+	</developers>
+
+	<distributionManagement>
+		<site>
+			<id>web-site</id>
+			<name>Website</name>
+			<url>file://workspace/doc</url>
+		</site>
+	</distributionManagement>
+
+	<dependencies>
+		<!-- necessario per jacoco:report-aggregate -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${{values.component_id}}</artifactId>
+			<version>${project.version}-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.2.0</version>
+				</plugin>
+				<plugin>
+					<!-- Maven site -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.9.1</version>
+					<configuration></configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>3.1.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.2.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>${sonar-maven-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<inherited>false</inherited>
+				<executions>
+					<execution>
+						<id>copy-docker-resources</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target</outputDirectory>
+							<resources>
+								<resource>
+									<directory>./</directory>
+									<includes>
+										<include>docker-compose.*</include>
+										<include>Makefile</include>
+									</includes>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<!-- workaround per evitare che Docker crei la cartella "test" come root -->
+						<!-- il problema si verifica su ./mvnw install -DskipTests -->
+						<id>create-test-folder</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/test-results/test</outputDirectory>
+							<resources>
+								<resource>
+									<directory>./</directory>
+									<includes>
+										<include>dir.txt</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<!-- Copia gli script necessari necessari per il sito maven -->
+						<id>copy-script-resources</id>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/tools</directory>
+									<includes>
+										<include>jira.sh</include>
+									</includes>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<!-- copy docker resources for Integration Test -->
+						<id>copy-docker-chromedriver</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/chrome</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/docker</directory>
+									<includes>
+										<include>Dockerfile-chrome</include>
+									</includes>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<!-- copy docker resources for Integration Test -->
+						<id>copy-docker-selenium-side-runner</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/selenium-side-runner</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/docker</directory>
+									<includes>
+										<include>Dockerfile-side-runner</include>
+										<include>docker-entrypoint.sh</include>
+									</includes>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- <plugin>
+				<groupId>org.owasp</groupId>
+				<artifactId>dependency-check-maven</artifactId>
+				<version>${dependency-check-maven.version}</version>				
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> -->
+
+			<!--			<plugin>
+				<artifactId>exec-maven-plugin</artifactId>
+				<groupId>org.codehaus.mojo</groupId>
+				<inherited>false</inherited>
+				<executions>
+					<execution>
+						 Integrazione con Jira: esegue comando per prelevare release notes
+						<id>jira-get-release-notes</id>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${basedir}/target/jira.sh</executable>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>-->
+
+			<plugin>
+				<!-- Maven site -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<configuration>
+					<siteDirectory>site-docs/site</siteDirectory>
+					<locales>it</locales>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- Reportistica inclusa nel sito maven-->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<!-- Generate default reports -->
+			<!-- cfr. https://maven.apache.org/guides/mini/guide-site.html#configuring-reports -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependencies</report>
+							<report>dependency-convergence </report>
+							<report>dependency-info </report>
+							<report>dependency-management</report>
+							<report>distribution-management </report>
+							<report>team</report>
+							<report>mailing-lists</report>
+							<report>ci-management</report>
+							<report>issue-management</report>
+							<report>scm</report>
+							<report>help </report>
+							<report>issue-management</report>
+							<report>modules</report>
+							<report>plugin-management</report>
+							<report>plugins</report>
+							<report>summary</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<!-- Integrate reports with JavaDoc -->
+			<!-- cfr. https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<show>public</show>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+
+
+	<!-- SELENIUM -->
+
+	<profiles>
+		<profile>
+			<id>selenium</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>docker-maven-plugin</artifactId>
+						<version>0.36.1</version>
+						<configuration>
+							<images>
+								<image>
+									<name>${project.groupId}/${project.artifactId}-backend:${project.version}</name>
+									<alias>backend</alias>
+									<build>
+										<dockerFile>${project.basedir}/backend/target/docker/Dockerfile-Backend</dockerFile>
+									</build>
+									<run>
+										<hostname>backend</hostname>
+										<ports>
+											<port>8081:8080</port>
+											<port>6300:6300</port>											<!-- jacoco Agent -->
+										</ports>
+										<log>
+											<enabled>false</enabled>
+										</log>
+										<wait>
+											<time>120000</time>
+											<http>
+												<url>http://localhost:8081/rest/v1/public/comuni/</url>
+												<method>GET</method>
+												<status>200</status>
+											</http>
+										</wait>
+									</run>
+								</image>
+								<image>
+									<name>${project.groupId}/${project.artifactId}-frontend:${project.version}</name>
+									<alias>frontend</alias>
+									<build>
+										<dockerFile>${project.basedir}/frontend/target/docker/Dockerfile-Frontend</dockerFile>
+									</build>
+									<run>
+										<hostname>frontend</hostname>
+										<ports>
+											<port>8080:8080</port>
+										</ports>
+										<links>
+											<link>backend</link>
+										</links>
+										<log>
+											<enabled>false</enabled>
+										</log>
+									</run>
+								</image>
+								<image>
+									<name>${project.groupId}/${project.artifactId}-chromedriver</name>
+									<alias>chromedriver</alias>
+									<build>
+										<dockerFile>${project.basedir}/target/chrome/Dockerfile-chrome</dockerFile>
+									</build>
+									<run>
+										<!-- <env>
+											<CHROMEDRIVER_WHITELISTED_IPS></CHROMEDRIVER_WHITELISTED_IPS>
+										</env> -->
+										<hostname>chromedriver</hostname>
+										<ports>
+											<port>4444:4444</port>
+										</ports>
+										<links>
+											<link>frontend</link>
+										</links>
+										<!-- <privileged>true</privileged> -->
+										<log>
+											<enabled>false</enabled>
+										</log>
+										<shmSize>2147483648</shmSize>
+										<!-- <volumes>
+											<bind>
+												<volume>/dev/shm:/dev/shm</volume>
+											</bind>
+										</volumes> -->
+									</run>
+								</image>
+								<image>
+									<name>${project.groupId}/${project.artifactId}-side-runner</name>
+									<alias>side-runner</alias>
+									<build>
+										<dockerFile>${project.basedir}/target/selenium-side-runner/Dockerfile-side-runner</dockerFile>
+									</build>
+									<run>
+										<!--
+										<env>
+											<HTTP_PROXY>http://proxy-bc.insiel.it:8046</HTTP_PROXY>
+											<HTTPS_PROXY>http://proxy-bc.insiel.it:8046</HTTPS_PROXY>
+										</env>
+										-->
+										<log>
+											<prefix>[SELENIUM] </prefix>
+										</log>
+										<hostname>runner</hostname>
+										<links>
+											<link>chromedriver</link>
+										</links>
+										<volumes>
+											<bind>
+												<volume>${project.basedir}/frontend/target/testplan:/sides</volume>
+												<volume>${project.basedir}/target/test-results/test:/out</volume>
+											</bind>
+										</volumes>
+										<wait>
+											<!-- 2 minuti -->
+											<time>120000</time>
+											<exit>0</exit>
+										</wait>
+									</run>
+								</image>
+							</images>
+						</configuration>
+						<executions>
+							<execution>
+								<id>start</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>build</goal>
+									<goal>start</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>stop</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>stop</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<!-- Produzione di report per i test di Selenium -->
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>0.8.7</version>
+						<executions>
+							<execution>
+								<id>jacoco-dump</id>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>dump</goal>
+								</goals>
+								<configuration>
+									<address>localhost</address>
+									<port>6300</port>
+								</configuration>
+							</execution>
+							<execution>
+								<id>report-aggregate</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>report-aggregate</goal>
+								</goals>
+							</execution>
+							<!-- <execution>
+								<id>jacoco-it-site</id>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>report</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>target/jacoco-it-report</outputDirectory>
+								</configuration>
+							</execution> -->
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>owasp-dependency-check</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.owasp</groupId>
+						<artifactId>dependency-check-maven</artifactId>
+						<version>${dependency-check-maven.version}</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<modules>
+		<module>backend</module>
+		<module>frontend</module>
+	</modules>
+
+</project>

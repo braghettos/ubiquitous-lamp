@@ -1,0 +1,5 @@
+capabilities:
+  browserName: "firefox"
+baseUrl: "http://www.regione.fvg.it"
+server: "http://hub:4444/wd/hub"
+output-directory: /selenium/results

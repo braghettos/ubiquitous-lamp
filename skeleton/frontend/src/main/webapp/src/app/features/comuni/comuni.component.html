@@ -1,0 +1,215 @@
+<section id="briciole" class="container px-4 my-4">
+  <div class="row">
+    <div class="col px-lg-4">
+      <nav aria-label="breadcrumb" class="breadcrumb-container">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a routerLink="">Home</a><span
+            class="separator">/</span>
+          </li>
+          <li aria-current="page" class="breadcrumb-item active">
+            Comuni
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</section>
+<section id="intro" class="container px-4 my-4">
+  <div class="row">
+    <div class="col-lg-7 px-lg-4 py-lg-2">
+      <h1>Comuni</h1>
+      <p>Servizio di ricerca dei comuni presenti in Friuli Venezia Giulia.
+        Informazioni sul servizio web utilizzato sono presenti sulla pagina di <a href="/swagger-ui/index.html"
+                                                                                  target="_blank">documentazione di
+          swagger</a>
+        Dati recuperati da <a href="https://it.wikipedia.org/wiki/Comuni_del_Friuli-Venezia_Giulia"
+                              target="_blank" rel=noopener>Wikipedia</a>
+        .</p>
+      <div class="form-group mt-5">
+        <form>
+          <input id="ricerca-amministrazione" type="search">
+          <label for="ricerca-amministrazione" style="width: auto;">Cerca contenuti in
+            "Comuni"</label>
+          <span aria-hidden="true" class="autocomplete-icon">
+              <svg class="icon icon-sm"><use
+                xlink:href="svg/sprite.svg#it-search"></use></svg>
+            </span>
+        </form>
+      </div>
+      <app-commons-filtri></app-commons-filtri>
+    </div>
+
+    <table class="table table-hover table-sm">
+      <caption>Elenco dei comuni</caption>
+      <thead clas="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Comune</th>
+        <th scope="col">Provincia</th>
+        <th scope="col">Abitanti</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let comune of comuni; let i=index ">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{comune.nome}}</td>
+        <td>{{comune.provincia}}</td>
+        <td>{{comune.abitanti }}</td>
+      </tr>
+
+      </tbody>
+    </table>
+
+    <div class="col-lg-4 offset-lg-1 pt-5 pt-lg-2">
+      <div class="link-list-wrapper">
+        <ul class="link-list">
+          <li>
+            <h3 id="heading-senza-link">Tutta l'Amministrazione</h3>
+          </li>
+          <li>
+            <a class="list-item" routerLink=""><span>Organi di governo</span></a>
+          </li>
+          <li>
+            <a class="list-item" routerLink=""><span>Aree amministrative</span></a>
+          </li>
+          <li>
+            <a class="list-item" routerLink=""><span>Uffici</span></a>
+          </li>
+          <li>
+            <a class="list-item" routerLink=""><span>Enti e fondazioni</span></a>
+          </li>
+          <li>
+            <a class="list-item" routerLink=""><span>Politici</span></a>
+          </li>
+          <li>
+            <a class="list-item" routerLink=""><span>Personale amministrativo</span></a>
+          </li>
+          <li>
+            <a class="list-item" routerLink=""><span>Luoghi</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<app-commons-evidenza></app-commons-evidenza>
+<section>
+  <div class="py-5">
+    <div class="container px-4">
+      <div class="row">
+        <div class="col">
+          <h3 class="mb-4">Tutta l'Amministrazione</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <a routerLink="">
+                  <h5 class="card-title">Organi di Governo</h5>
+                </a>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <a routerLink="">
+                  <h5 class="card-title">Aree Amministrative</h5>
+                </a>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <a routerLink="">
+                  <h5 class="card-title">Uffici</h5>
+                </a>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <a routerLink="">
+                  <h5 class="card-title">Politici</h5>
+                </a>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <a routerLink="">
+                  <h5 class="card-title">Funzionari amministrativi</h5>
+                </a>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <a routerLink="">
+                  <h5 class="card-title">Enti e fondazioni</h5>
+                </a>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <!--start card-->
+          <div class="card-wrapper">
+            <div class="card">
+              <div class="card-body">
+                <a routerLink="">
+                  <h5 class="card-title">Luoghi</h5>
+                </a>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </div>
+          </div>
+          <!--end card-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-commons-argomenti></app-commons-argomenti>
+</section>

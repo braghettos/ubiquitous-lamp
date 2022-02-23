@@ -1,0 +1,6 @@
+capabilities:
+  browserName: "chrome"
+  goog:chromeOptions.args: [disable-infobars, headless]
+baseUrl: "http://www.regione.fvg.it"
+server: "http://hub:4444/wd/hub"
+output-directory: /selenium/results

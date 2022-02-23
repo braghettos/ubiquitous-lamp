@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{values.component_id}}
+  description: ${{values.description}}
+  tags:
+    - java
+  annotations:
+    github.com/project-slug: ${{values.destination.owner + "/" + values.destination.repo}}
+    backstage.io/techdocs-ref: dir:.
+    argocd/app-name: ${{values.destination.repo | dump}}
+spec:
+  type: service
+  lifecycle: experimental
+  owner: ${{values.owner | dump}}

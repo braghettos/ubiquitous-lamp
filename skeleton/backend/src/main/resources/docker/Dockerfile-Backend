@@ -1,0 +1,38 @@
+# [Choice] Java version: 15, 17
+FROM openjdk:17-alpine
+# Create env variable to use inside ENTRYPOINT at runtime
+# ENV APP_JAR_FILE_ENV="@project.artifactId@-@project.version@.jar"
+# Sets the path where the app is going to be installed
+# ENV APP_ROOT /app
+# Set the Current Working Directory inside the container
+RUN mkdir /app
+WORKDIR /app
+# Copy the source from the current directory to the Working Directory inside the container
+# COPY $APP_JAR_FILE_ENV /app/app.jar
+
+COPY org.jacoco.agent-0.8.7.jar ./jacocoagent.jar
+
+COPY dependencies/ ./
+COPY spring-boot-loader ./
+COPY snapshot-dependencies/ ./
+COPY application/ ./
+
+# ELASTIC APM
+COPY elastic-apm-agent-1.28.3.jar ./elastic-apm-agent.jar
+
+ENV ELASTIC_APM_SERVICE_NAME="ipp-java-reference-app"
+ENV ELASTIC_APM_APPLICATION_PACKAGES="it.insiel.innovazione.ipp.referenceapp"
+ENV ELASTIC_APM_SERVER_URL="https://elasticapm.insiel.it:8200"
+ENV ELASTIC_APM_VERIFY_SERVER_CERT="false"
+# ENV ELASTIC_APM_LOG_FILE=/tmp/apm-agent.log"
+
+
+# Expose port 8080 to the other containers
+EXPOSE 8080/tcp
+
+# Jacoco Agent
+EXPOSE 6300/tcp
+
+#FIXME Parametrizzare jacoco con CMD o ENV per evitare di eseguire jacoco in produzione
+
+ENTRYPOINT ["java", "-javaagent:jacocoagent.jar=address=*,port=6300,destfile=jacoco-it.exec,output=tcpserver,append=false", "-javaagent:elastic-apm-agent.jar", "-Dspring.profiles.active=prod", "org.springframework.boot.loader.JarLauncher"]

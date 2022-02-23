@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg has-megamenu">
+  <button aria-controls="nav10"
+          aria-label="Toggle navigation" class="custom-navbar-toggler"
+          data-target="#nav10" type="button"
+          [ngClass]="{'focus--mouse' : !isCollapsed}"
+          (click)="isCollapsed = !isCollapsed">
+    <svg class="icon">
+      <use
+        xlink:href="svg/sprite.svg#it-burger"></use>
+    </svg>
+  </button>
+  <div class="navbar-collapsable" [ngClass]="{'expanded' : !isCollapsed}" id="nav10"
+       [ngStyle]="{'display'  : isCollapsed ? 'none' : 'block'}" (click)="isCollapsed = true">
+    <div class="overlay" [ngStyle]="{'display'  : isCollapsed ? 'none' : 'block'}"></div>
+    <div class="close-div sr-only">
+      <button class="btn close-menu" type="button">
+        <span class="it-close"></span>close
+      </button>
+    </div>
+    <div class="menu-wrapper">
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/comuni" routerLinkActive="active">
+            <span>Comuni</span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a routerLink="/servizi" routerLinkActive="active" class="nav-link ">
+            <span>Servizi</span>
+
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a routerLink="/novita" routerLinkActive="active" class="nav-link">
+            <span>Novità</span>
+
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a routerLink="/documenti" routerLinkActive="active" class="nav-link"
+          >
+            <span>Documenti</span>
+
+          </a>
+        </li>
+      </ul>     
+    </div>
+  </div>
+</nav>
