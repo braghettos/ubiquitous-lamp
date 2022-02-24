@@ -39,11 +39,9 @@ spec:
           title: Credentials
           type: string
           description: Credentials to use to connect to Cloudbees
-          # ui:field: TextValuePicker
-          # ui:options:
-          #   allowedValues:
-          #     - cb1
-          #     - cb2
+          enum:
+            - default
+            - default-2
 
     - title: Choose a location
       required:
