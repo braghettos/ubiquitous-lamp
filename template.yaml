@@ -40,7 +40,7 @@ spec:
           type: string
           description: Credentials to use to connect to Cloudbees
           ui:field: TextValuePicker
-          ui:schema:
+          values:
             - cb1
             - cb2
 
