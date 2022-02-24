@@ -33,12 +33,12 @@ spec:
 
     - title: Cloudbees
       required:
-        - credentialsId
+        - masterName
       properties:
-        credentialsId:
-          title: Credentials
+        masterName:
+          title: Node name
           type: string
-          description: Credentials to use to connect to Cloudbees
+          description: Cloudbees Node Name
           enum:
             - default
             - default-2
@@ -104,7 +104,7 @@ spec:
       input:
         host: "{{ parameters.repoUrl }}"
         component_id: "{{ parameters.component_id }}"
-        credentialsId: "{{ parameters.credentialsId }}"
+        masterName: "{{ parameters.masterName }}"
 
   output:
     remoteUrl: "{{ steps.publish.output.remoteUrl }}"
