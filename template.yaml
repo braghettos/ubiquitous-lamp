@@ -31,6 +31,20 @@ spec:
           type: string
           description: Owner of the component
 
+    - title: Cloudbees
+      required:
+        - credentialsId
+      properties:
+        credentialsId:
+          title: Credentials
+          type: string
+          description: Credentials to use to connect to Cloudbees
+          ui:field: EntityPicker
+          ui:options:
+            allowedKinds:
+              - cb1
+              - cb2
+
     - title: Choose a location
       required:
         - repoUrl
@@ -50,41 +64,49 @@ spec:
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
-    - id: template
-      name: Fetch Skeleton + Template
-      action: fetch:template
-      input:
-        url: ./skeleton
-        values:
-          component_id: "{{ parameters.component_id }}"
-          description: "{{ parameters.description }}"
-          owner: "{{ parameters.owner }}"
-          destination: "{{ parseRepoUrl parameters.repoUrl }}"
+    # - id: template
+    #   name: Fetch Skeleton + Template
+    #   action: fetch:template
+    #   input:
+    #     url: ./skeleton
+    #     values:
+    #       component_id: "{{ parameters.component_id }}"
+    #       description: "{{ parameters.description }}"
+    #       owner: "{{ parameters.owner }}"
+    #       destination: "{{ parseRepoUrl parameters.repoUrl }}"
 
-    - id: publish
-      name: Publish
-      action: publish:github
-      input:
-        allowedHosts: ["github.com", "github.insiel.it"]
-        description: "This is a Demo App with name {{ parameters.component_id }}"
-        repoUrl: "{{ parameters.repoUrl }}"
-        repoVisibility: public
-        defaultBranch: main
+    # - id: publish
+    #   name: Publish
+    #   action: publish:github
+    #   input:
+    #     allowedHosts: ["github.com", "github.insiel.it"]
+    #     description: "This is a Demo App with name {{ parameters.component_id }}"
+    #     repoUrl: "{{ parameters.repoUrl }}"
+    #     repoVisibility: public
+    #     defaultBranch: main
 
-    - id: register
-      name: Register
-      action: catalog:register
-      input:
-        repoContentsUrl: "{{ steps.publish.output.repoContentsUrl }}"
-        catalogInfoPath: "/catalog-info.yaml"
+    # - id: register
+    #   name: Register
+    #   action: catalog:register
+    #   input:
+    #     repoContentsUrl: "{{ steps.publish.output.repoContentsUrl }}"
+    #     catalogInfoPath: "/catalog-info.yaml"
 
-    - id: krateo:ro-insiel
-      name: Release Orchestration
-      action: krateo:ro-insiel
+    # - id: krateo:ro-insiel
+    #   name: Release Orchestration
+    #   action: krateo:ro-insiel
+    #   input:
+    #     host: "{{ parameters.repoUrl }}"
+    #     component_id: "{{ parameters.component_id }}"
+    #     gitHubUrl: "{{ parameters.gitHubUrl }}"
+
+    - id: krateo:cloudbees-insiel
+      name: Cloudbees
+      action: krateo:cloudbees-insiel
       input:
         host: "{{ parameters.repoUrl }}"
         component_id: "{{ parameters.component_id }}"
-        gitHubUrl: "{{ parameters.gitHubUrl }}"
+        credentialsId: "{{ parameters.credentialsId }}"
 
   output:
     remoteUrl: "{{ steps.publish.output.remoteUrl }}"

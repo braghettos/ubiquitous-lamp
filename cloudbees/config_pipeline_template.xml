@@ -1,0 +1,76 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject plugin="workflow-multibranch@2.26">
+  <actions/>
+  <description>IPP - Reference Java Application</description>
+  <properties>
+    <com.cloudbees.hudson.plugins.folder.properties.EnvVarsFolderProperty plugin="cloudbees-folders-plus@3.22">
+      <properties></properties>
+    </com.cloudbees.hudson.plugins.folder.properties.EnvVarsFolderProperty>
+    <org.csanchez.jenkins.plugins.kubernetes.KubernetesFolderProperty plugin="kubernetes@1.30.1">
+      <permittedClouds/>
+    </org.csanchez.jenkins.plugins.kubernetes.KubernetesFolderProperty>
+    <org.jenkinsci.plugins.workflow.multibranch.PipelineTriggerProperty plugin="multibranch-action-triggers@1.8.6">
+      <createActionJobsToTrigger></createActionJobsToTrigger>
+      <deleteActionJobsToTrigger></deleteActionJobsToTrigger>
+      <actionJobsToTriggerOnRunDelete>RunOnJobDelete, </actionJobsToTriggerOnRunDelete>
+      <quitePeriod>0</quitePeriod>
+      <branchIncludeFilter>*</branchIncludeFilter>
+      <branchExcludeFilter></branchExcludeFilter>
+      <additionalParameters/>
+    </org.jenkinsci.plugins.workflow.multibranch.PipelineTriggerProperty>
+  </properties>
+  <folderViews class="jenkins.branch.MultiBranchProjectViewHolder" plugin="branch-api@2.7.0">
+    <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+  </folderViews>
+  <healthMetrics/>
+  <icon class="jenkins.branch.MetadataActionFolderIcon" plugin="branch-api@2.7.0">
+    <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+  </icon>
+  <orphanedItemStrategy class="com.cloudbees.hudson.plugins.folder.computed.DefaultOrphanedItemStrategy" plugin="cloudbees-folder@6.16">
+    <pruneDeadBranches>true</pruneDeadBranches>
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>-1</numToKeep>
+  </orphanedItemStrategy>
+  <triggers/>
+  <disabled>false</disabled>
+  <sources class="jenkins.branch.MultiBranchProject$BranchSourceList" plugin="branch-api@2.7.0">
+    <data>
+      <jenkins.branch.BranchSource>
+        <source class="org.jenkinsci.plugins.github_branch_source.GitHubSCMSource" plugin="github-branch-source@2.11.3">
+          <id>${{ guid }}</id>
+          <apiUri>https://github.insiel.it/api/v3</apiUri>
+          <credentialsId>${{ credentialsId }}</credentialsId>
+          <repoOwner>${{ owner }}</repoOwner>
+          <repository>${{ repo }}</repository>
+          <repositoryUrl>https://github.insiel.it/${{ owner }}/${{ repo }}.git</repositoryUrl>
+          <traits>
+            <org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait>
+              <strategyId>1</strategyId>
+            </org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait>
+            <org.jenkinsci.plugins.github__branch__source.OriginPullRequestDiscoveryTrait>
+              <strategyId>1</strategyId>
+            </org.jenkinsci.plugins.github__branch__source.OriginPullRequestDiscoveryTrait>
+            <org.jenkinsci.plugins.github__branch__source.ForkPullRequestDiscoveryTrait>
+              <strategyId>1</strategyId>
+              <trust class="org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustPermission"/>
+            </org.jenkinsci.plugins.github__branch__source.ForkPullRequestDiscoveryTrait>
+          </traits>
+        </source>
+        <strategy class="jenkins.branch.DefaultBranchPropertyStrategy">
+          <properties class="empty-list"/>
+        </strategy>
+      </jenkins.branch.BranchSource>
+    </data>
+    <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+  </sources>
+  <factory class="com.cloudbees.workflow.multibranch.CustomBranchProjectFactory" plugin="cloudbees-workflow-template@3.12">
+    <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+    <marker>jenkins.yml</marker>
+    <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.94">
+      <script>@Library(&apos;jenkinsSharedLibraries@krateo-ci&apos;) _
+
+multibranchPipeline(builderType: &apos;maven&apos;, deploymentType: &apos;rhos&apos;, artifactDaysToKeepStr:&apos;10&apos;, daysToKeepStr:&apos;10&apos;)</script>
+      <sandbox>true</sandbox>
+    </definition>
+  </factory>
+</org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject>
