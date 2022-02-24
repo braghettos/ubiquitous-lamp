@@ -39,8 +39,8 @@ spec:
           title: Credentials
           type: string
           description: Credentials to use to connect to Cloudbees
-          ui:field: Picker
-          ui:options:
+          ui:field: TextValuePicker
+          ui:schema:
             - cb1
             - cb2
 
