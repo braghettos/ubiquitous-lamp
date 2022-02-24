@@ -43,6 +43,10 @@ spec:
             allowedHosts:
               - github.insiel.it
               - github.com
+        gitHubUrl:
+          title: GitHub Api Url
+          type: string
+          default: https://api.github.com
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
@@ -80,6 +84,7 @@ spec:
       input:
         host: "{{ parameters.repoUrl }}"
         component_id: "{{ parameters.component_id }}"
+        gitHubUrl: "{{ parameters.gitHubUrl }}"
 
   output:
     remoteUrl: "{{ steps.publish.output.remoteUrl }}"
