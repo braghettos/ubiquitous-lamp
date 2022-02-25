@@ -40,8 +40,8 @@ spec:
           type: string
           description: Cloudbees Node Name
           enum:
-            - default
-            - default-2
+            - master-01
+            - master-02
 
     - title: Choose a location
       required:
