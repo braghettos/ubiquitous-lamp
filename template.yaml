@@ -39,6 +39,7 @@ spec:
           title: Node name
           type: string
           description: Cloudbees Node Name
+          default: master-01
           enum:
             - master-01
             - master-02
