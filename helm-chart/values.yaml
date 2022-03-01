@@ -1,10 +1,2 @@
-apiVersion: v2
-name: ipp-app-template
-description: Ipp App Template
-type: application
-icon: "https://github.com/projectkerberus/kerberus-dashboard/blob/main/docs/media/square_black_logo.png"
-
-version: 0.1.0
-appVersion: 0.1.0
-
 image: "${{ component_id }}"
+tag: latest
