@@ -42,9 +42,9 @@ modules:
   test:
     # Permette di saltare i test. 
     # Tale opzione verrà evidenziata nel Summary Report
-    skip: false
+    skip: true
     # Permette di bloccare la pipeline nel caso in cui i test falliscano
-    abortOnError: true
+    abortOnError: false
   # Opzioni del quality gate (Sonarqube)
   qualityGate:
     # Permette di saltare l'analisi del codice
@@ -135,8 +135,8 @@ modules:
       type: NONE
     targetDir: "frontend/target"
     test:
-      skip: false
-      abortOnError: true
+      skip: true
+      abortOnError: false
     qualityGate:
       skip: true
       abortOnError: false
