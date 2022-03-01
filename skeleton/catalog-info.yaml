@@ -10,7 +10,7 @@ metadata:
     backstage.io/techdocs-ref: dir:.
     argocd/app-name: ${{values.destination.repo | dump}}
     keptn.sh/service: ${{values.component_id | dump}}
-    keptn.sh/project: ${{values.component_id} | dump}
+    keptn.sh/project: ${{values.component_id | dump}}
 spec:
   type: service
   lifecycle: experimental
