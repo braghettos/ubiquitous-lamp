@@ -56,14 +56,14 @@ spec:
             allowedHosts:
               - github.insiel.it
               - github.com
-          default: github.com
+          default: github.insiel.it
         gitHubUrl:
           title: GitHub Api Url
           type: string
           enum:
             - https://api.github.com
             - https://github.insiel.it/api/v3
-          default: https://api.github.com
+          default: https://github.insiel.it/api/v3
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
