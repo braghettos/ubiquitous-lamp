@@ -38,11 +38,11 @@
       <jenkins.branch.BranchSource>
         <source class="org.jenkinsci.plugins.github_branch_source.GitHubSCMSource" plugin="github-branch-source@2.11.3">
           <id>${{ guid }}</id>
-          <apiUri>https://github.insiel.it/api/v3</apiUri>
+          <apiUri>https://api.github.com</apiUri>
           <credentialsId>github-app-master-01</credentialsId>
           <repoOwner>${{ owner }}</repoOwner>
           <repository>${{ repo }}</repository>
-          <repositoryUrl>https://github.insiel.it/${{ owner }}/${{ repo }}.git</repositoryUrl>
+          <repositoryUrl>https://github.com/${{ owner }}/${{ repo }}.git</repositoryUrl>
           <traits>
             <org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait>
               <strategyId>1</strategyId>
