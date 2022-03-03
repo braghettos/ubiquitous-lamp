@@ -1,7 +1,7 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject plugin="workflow-multibranch@2.26">
   <actions/>
-  <description>IPP - Reference Java Application</description>
+  <description></description>
   <properties>
     <com.cloudbees.hudson.plugins.folder.properties.EnvVarsFolderProperty plugin="cloudbees-folders-plus@3.22">
       <properties></properties>
@@ -65,11 +65,11 @@
   </sources>
   <factory class="com.cloudbees.workflow.multibranch.CustomBranchProjectFactory" plugin="cloudbees-workflow-template@3.12">
     <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
-    <marker>jenkins.yml</marker>
+    <marker>Chart.yaml</marker>
     <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.94">
       <script>@Library(&apos;jenkinsSharedLibraries@krateo-ci&apos;) _
 
-multibranchPipeline(builderType: &apos;maven&apos;, deploymentType: &apos;rhos&apos;, artifactDaysToKeepStr:&apos;10&apos;, daysToKeepStr:&apos;10&apos;)</script>
+buildHelmChart(builderType: &apos;helm&apos;, deploymentType: &apos;k8s&apos;, artifactDaysToKeepStr:&apos;10&apos;, daysToKeepStr:&apos;10&apos;)</script>
       <sandbox>true</sandbox>
     </definition>
   </factory>
