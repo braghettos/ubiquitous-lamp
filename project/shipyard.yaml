@@ -4,7 +4,7 @@ metadata:
   name: "shipyard"
 spec:
   stages:
-    - name: "dev"
+    - name: "svil"
       sequences:
         - name: "delivery"
           tasks:
@@ -23,11 +23,11 @@ spec:
                 deploymentstrategy: "direct"
             - name: "release"
 
-    - name: "staging"
+    - name: "coll"
       sequences:
         - name: "delivery"
           triggeredOn:
-            - event: "dev.delivery.finished"
+            - event: "svil.delivery.finished"
           tasks:
             - name: "deployment"
               properties:
@@ -39,7 +39,7 @@ spec:
             - name: "release"
         - name: "rollback"
           triggeredOn:
-            - event: "staging.delivery.finished"
+            - event: "coll.delivery.finished"
               selector:
                 match:
                   result: "fail"
@@ -47,18 +47,18 @@ spec:
             - name: "rollback"
         - name: "delivery-direct"
           triggeredOn:
-            - event: "dev.delivery-direct.finished"
+            - event: "svil.delivery-direct.finished"
           tasks:
             - name: "deployment"
               properties:
                 deploymentstrategy: "direct"
             - name: "release"
 
-    - name: "production"
+    - name: "prod"
       sequences:
         - name: "delivery"
           triggeredOn:
-            - event: "staging.delivery.finished"
+            - event: "coll.delivery.finished"
           tasks:
             - name: "deployment"
               properties:
@@ -66,7 +66,7 @@ spec:
             - name: "release"
         - name: "rollback"
           triggeredOn:
-            - event: "production.delivery.finished"
+            - event: "prod.delivery.finished"
               selector:
                 match:
                   result: "fail"
@@ -74,7 +74,7 @@ spec:
             - name: "rollback"
         - name: "delivery-direct"
           triggeredOn:
-            - event: "staging.delivery-direct.finished"
+            - event: "coll.delivery-direct.finished"
           tasks:
             - name: "deployment"
               properties:
@@ -83,7 +83,7 @@ spec:
 
         - name: "remediation"
           triggeredOn:
-            - event: "production.remediation.finished"
+            - event: "prod.remediation.finished"
               selector:
                 match:
                   evaluation.result: "fail"
