@@ -48,13 +48,13 @@ modules:
   # Opzioni del quality gate (Sonarqube)
   qualityGate:
     # Permette di saltare l'analisi del codice
-    skip: false
+    skip: true
     # Permette di bloccare l'esecuzione della pipeline in caso di errori
     abortOnError: false
   # Generazione della documentazione
   documentation:
     # Permette di saltare la generazione della documentazione
-    skip: false
+    skip: true
   # Specifiche di deployment
   deployment:
     # Tipo di deploy
@@ -141,7 +141,7 @@ modules:
       skip: true
       abortOnError: false
     documentation:
-      skip: false
+      skip: true
     deployment:
       type: RHOS
       deploy: true
