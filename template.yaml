@@ -112,13 +112,13 @@ spec:
         host: "{{ parameters.repoUrl }}"
         component_id: "{{ parameters.component_id }}"
 
-    # - id: krateo:cloudbees-insiel
-    #   name: Cloudbees
-    #   action: krateo:cloudbees-insiel
-    #   input:
-    #     host: "{{ parameters.repoUrl }}"
-    #     component_id: "{{ parameters.component_id }}"
-    #     masterName: "{{ parameters.masterName }}"
+    - id: krateo:cloudbees-insiel
+      name: Cloudbees
+      action: krateo:cloudbees-insiel
+      input:
+        host: "{{ parameters.repoUrl }}"
+        component_id: "{{ parameters.component_id }}"
+        masterName: "{{ parameters.masterName }}"
 
   output:
     remoteUrl: "{{ steps.publish.output.remoteUrl }}"
