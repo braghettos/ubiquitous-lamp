@@ -103,6 +103,13 @@ spec:
         component_id: "{{ parameters.component_id }}"
         gitHubUrl: "{{ parameters.gitHubUrl }}"
 
+    - id: krateo:keptn-insiel
+      name: Keptn
+      action: krateo:keptn-insiel
+      input:
+        host: "{{ parameters.repoUrl }}"
+        component_id: "{{ parameters.component_id }}"
+
     - id: krateo:cloudbees-insiel
       name: Cloudbees
       action: krateo:cloudbees-insiel
@@ -110,13 +117,6 @@ spec:
         host: "{{ parameters.repoUrl }}"
         component_id: "{{ parameters.component_id }}"
         masterName: "{{ parameters.masterName }}"
-
-    - id: krateo:keptn-insiel
-      name: Keptn
-      action: krateo:keptn-insiel
-      input:
-        host: "{{ parameters.repoUrl }}"
-        component_id: "{{ parameters.component_id }}"
 
   output:
     remoteUrl: "{{ steps.publish.output.remoteUrl }}"
