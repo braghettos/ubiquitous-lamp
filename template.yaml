@@ -26,10 +26,12 @@ spec:
           title: Description
           type: string
           description: Help others understand what this service does.
+          default: Ubiquitous-Lamp
         owner:
           title: Owner
           type: string
           description: Owner of the component
+          default: innovazione
 
     - title: Cloudbees
       required:
@@ -110,13 +112,13 @@ spec:
         host: "{{ parameters.repoUrl }}"
         component_id: "{{ parameters.component_id }}"
 
-    - id: krateo:cloudbees-insiel
-      name: Cloudbees
-      action: krateo:cloudbees-insiel
-      input:
-        host: "{{ parameters.repoUrl }}"
-        component_id: "{{ parameters.component_id }}"
-        masterName: "{{ parameters.masterName }}"
+    # - id: krateo:cloudbees-insiel
+    #   name: Cloudbees
+    #   action: krateo:cloudbees-insiel
+    #   input:
+    #     host: "{{ parameters.repoUrl }}"
+    #     component_id: "{{ parameters.component_id }}"
+    #     masterName: "{{ parameters.masterName }}"
 
   output:
     remoteUrl: "{{ steps.publish.output.remoteUrl }}"
