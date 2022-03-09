@@ -57,15 +57,15 @@ spec:
           ui:options:
             allowedHosts:
               - github.insiel.it
-              - github.com
+              # - github.com
           default: github.insiel.it
-        gitHubUrl:
-          title: GitHub Api Url
-          type: string
-          enum:
-            - https://api.github.com
-            - https://github.insiel.it/api/v3
-          default: https://github.insiel.it/api/v3
+        # gitHubUrl:
+        #   title: GitHub Api Url
+        #   type: string
+        #   enum:
+        #     - https://api.github.com
+        #     - https://github.insiel.it/api/v3
+        #   default: https://github.insiel.it/api/v3
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
@@ -103,7 +103,7 @@ spec:
       input:
         host: "{{ parameters.repoUrl }}"
         component_id: "{{ parameters.component_id }}"
-        gitHubUrl: "{{ parameters.gitHubUrl }}"
+        gitHubUrl: https://github.insiel.it/api/v3
 
     - id: krateo:keptn-insiel
       name: Keptn
