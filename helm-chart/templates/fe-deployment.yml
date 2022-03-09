@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}-fe
-        image: {{ .Values.image }}-fe:latest
+        image: {{ .Chart.Name }}-fe:latest
         imagePullPolicy: Always
         ports:
           - containerPort: 8080
