@@ -1,2 +1,2 @@
-image: "${{ component_id }}"
+image: "${{ component_id }}:latest"
 tag: latest
