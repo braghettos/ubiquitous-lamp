@@ -15,7 +15,7 @@ spec:
         app: backend
     spec:
       containers:
-      - name: {{ .Values.image }}-be
+      - name: {{ .Chart.Name }}-be
         image: {{ .Values.image }}-be:latest
         imagePullPolicy: Always
         ports:
