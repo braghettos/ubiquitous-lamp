@@ -15,8 +15,8 @@ spec:
         app: backend
     spec:
       containers:
-      - name: {{ .Values.image }}-be
-        image: {{ .Values.image }}-be:latest
+      - name: {{ .Chart.Name }}-backend
+        image: {{ include "keptn-image-name" . }}-backend:{{ include "keptn-image-tag" . }}
         imagePullPolicy: Always
         ports:
           - containerPort: 8080

@@ -15,8 +15,8 @@ spec:
         app: frontend
     spec:
       containers:
-      - name: {{ .Values.image }}-fe:latest
-        image: {{ .Values.image }}-fe:latest
+      - name: {{ .Chart.Name }}-frontend
+        image: {{ include "keptn-image-name" . }}-frontend:{{ include "keptn-image-tag" . }}
         imagePullPolicy: Always
         ports:
           - containerPort: 8080
