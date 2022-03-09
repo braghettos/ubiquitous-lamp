@@ -15,7 +15,7 @@ spec:
         app: frontend
     spec:
       containers:
-      - name: {{ .Values.image }}-fe
+      - name: {{ .Chart.Name }}-fe
         image: {{ .Values.image }}-fe:latest
         imagePullPolicy: Always
         ports:
