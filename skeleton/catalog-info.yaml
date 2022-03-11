@@ -11,7 +11,7 @@ metadata:
     argocd/app-name: ${{values.destination.repo | dump}}
     keptn.sh/service: ${{values.component_id | dump}}
     keptn.sh/project: ${{values.component_id | dump}}
-    sonarqube.org/project-key: ${{values.component_id | dump}}
+    sonarqube.org/project-key: ${{values.destination.owner + "_" + values.destination.repo}}
     prometheus.io/rule: "container_cpu_usage_seconds_total{namespace='${{values.component_id | dump}}'}"
     prometheus.io/alert: "Excessive Memory Usage"
 spec:

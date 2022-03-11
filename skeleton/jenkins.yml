@@ -1,9 +1,10 @@
 ---
 version: "1.0.0"
 # Identificativo del progetto
-# Se non impostato viene ricavato automaticamente 
+# Se non impostato viene ricavato automaticamente
 # dal nome del repository
-projectId: ''
+projectId: ""
+sonarqubeProjectKey: '${{values.destination.owner + "_" + values.destination.repo}}'
 # Configurazioni del workspace
 workspace:
   # Controlla la pulizia del workspace e dei comandi di clean dei tools quali maven
@@ -15,87 +16,36 @@ logger:
 notification:
   # Notifica via mail
   mail:
-    # Elenco degli indirizzi di posta elettronica a cui notificare eventuali 
+    # Elenco degli indirizzi di posta elettronica a cui notificare eventuali
     # problemi riscontrati nella fase di build
     mailingList: claudio.quagliaro@insiel.it
 # Definizione delle specifiche di build, creazione artefatti e deploy dei singoli moduli
 modules:
-# Nome del modulo
-- name: main
-  # Esposizione del modulo su intrante
-  # Se true allora il modulo sarà accessibile da intranet
-  expose: false
-  # Compilatore del modulo  
-  builder:
-    # Compilatore di default
-    # Se specificato viene utilizzato per compilare il progetto. Utile per progetti strutturati
-    # come nel caso di maven dove si può avere il progetto padre (con il suo pom) e dei sotto moduli (con i loro pom).
-    # Se non specificato verranno utilizzati i builder dei singoli moduli
-    # Se non impostato la build del modulo viene saltata
-    # Valori ammessi: NONE, MVN
-    type: MVN
-  # Directory di lavoro dove la pipeline ricerca tutti gli artefatti necessario per la build
-  # es. dockerfiles, file di deployments, di configurazione ecc.
-  # NB: senza / iniziale o finale
-  targetDir: "target"
-  # Opzioni di test
-  test:
-    # Permette di saltare i test. 
-    # Tale opzione verrà evidenziata nel Summary Report
-    skip: true
-    # Permette di bloccare la pipeline nel caso in cui i test falliscano
-    abortOnError: false
-  # Opzioni del quality gate (Sonarqube)
-  qualityGate:
-    # Permette di saltare l'analisi del codice
-    skip: true
-    # Permette di bloccare l'esecuzione della pipeline in caso di errori
-    abortOnError: false
-  # Generazione della documentazione
-  documentation:
-    # Permette di saltare la generazione della documentazione
-    skip: true
-  # Specifiche di deployment
-  deployment:
-    # Tipo di deploy
-    # UNDEFINED: non definito
-    # LIB: libreria che andrà messa in un repository (es. nexus)
-    # RHOS: deploy su RedHat OpenShift
-    # K8S: deploy su kubernetes            
-    type: RHOS
-    # Permette di evitare il deploy del modulo
-    deploy: false
-    # Percorso (relativo al workspace) del build context dell'immagine.
-    # E' la cartella contenente il dockerFile
-    context:
-    # Nome del docker file da utilizzare per la creazione dell'immagine
-    # Solo per RHOS e K8S
-    dockerFile: 
-    # Nome del file di deployment
-    # Solo per RHOS e K8S
-    deploymentFile: 
-  modules:
   # Nome del modulo
-  - name: backend
+  - name: main
     # Esposizione del modulo su intrante
     # Se true allora il modulo sarà accessibile da intranet
     expose: false
-    # Compilatore del modulo  
+    # Compilatore del modulo
     builder:
+      # Compilatore di default
+      # Se specificato viene utilizzato per compilare il progetto. Utile per progetti strutturati
+      # come nel caso di maven dove si può avere il progetto padre (con il suo pom) e dei sotto moduli (con i loro pom).
+      # Se non specificato verranno utilizzati i builder dei singoli moduli
       # Se non impostato la build del modulo viene saltata
-      # valori ammessi: NONE, MVN
-      type: NONE
+      # Valori ammessi: NONE, MVN
+      type: MVN
     # Directory di lavoro dove la pipeline ricerca tutti gli artefatti necessario per la build
     # es. dockerfiles, file di deployments, di configurazione ecc.
     # NB: senza / iniziale o finale
-    targetDir: "backend/target"
+    targetDir: "target"
     # Opzioni di test
     test:
-      # Permette di saltare i test. 
+      # Permette di saltare i test.
       # Tale opzione verrà evidenziata nel Summary Report
       skip: true
       # Permette di bloccare la pipeline nel caso in cui i test falliscano
-      abortOnError: true
+      abortOnError: false
     # Opzioni del quality gate (Sonarqube)
     qualityGate:
       # Permette di saltare l'analisi del codice
@@ -104,6 +54,7 @@ modules:
       abortOnError: false
     # Generazione della documentazione
     documentation:
+      # Permette di saltare la generazione della documentazione
       skip: true
     # Specifiche di deployment
     deployment:
@@ -111,52 +62,102 @@ modules:
       # UNDEFINED: non definito
       # LIB: libreria che andrà messa in un repository (es. nexus)
       # RHOS: deploy su RedHat OpenShift
-      # K8S: deploy su kubernetes            
+      # K8S: deploy su kubernetes
       type: RHOS
       # Permette di evitare il deploy del modulo
-      deploy: true
-      # Percorso (relativo alla cartella targetDir) del build context dell'immagine.
+      deploy: false
+      # Percorso (relativo al workspace) del build context dell'immagine.
       # E' la cartella contenente il dockerFile
-      context: "docker"
+      context:
       # Nome del docker file da utilizzare per la creazione dell'immagine
       # Solo per RHOS e K8S
-      dockerFile: Dockerfile-Backend
+      dockerFile:
       # Nome del file di deployment
       # Solo per RHOS e K8S
-      deploymentFile: k8s/be-deployment.yml
-      # Sezione dedicata a verificare se il servizio è online
-      healthCheck:
-        # Endpoint del servizio da chiamare. L'url completo viene calcolato
-        # in fase di deploy
-        relativeUrl:  
-  - name: frontend
-    expose: true
-    builder:
-      type: NONE
-    targetDir: "frontend/target"
-    test:
-      skip: true
-      abortOnError: false
-    qualityGate:
-      skip: true
-      abortOnError: false
-    documentation:
-      skip: true
-    deployment:
-      type: RHOS
-      deploy: true
-      context: "docker"
-      dockerFile: Dockerfile-Frontend
-      deploymentFile: k8s/fe-deployment.yml
-      healthCheck:
-        relativeUrl: /rest/v1/public/comuni/      
+      deploymentFile:
+    modules:
+      # Nome del modulo
+      - name: backend
+        # Esposizione del modulo su intrante
+        # Se true allora il modulo sarà accessibile da intranet
+        expose: false
+        # Compilatore del modulo
+        builder:
+          # Se non impostato la build del modulo viene saltata
+          # valori ammessi: NONE, MVN
+          type: NONE
+        # Directory di lavoro dove la pipeline ricerca tutti gli artefatti necessario per la build
+        # es. dockerfiles, file di deployments, di configurazione ecc.
+        # NB: senza / iniziale o finale
+        targetDir: "backend/target"
+        # Opzioni di test
+        test:
+          # Permette di saltare i test.
+          # Tale opzione verrà evidenziata nel Summary Report
+          skip: true
+          # Permette di bloccare la pipeline nel caso in cui i test falliscano
+          abortOnError: true
+        # Opzioni del quality gate (Sonarqube)
+        qualityGate:
+          # Permette di saltare l'analisi del codice
+          skip: true
+          # Permette di bloccare l'esecuzione della pipeline in caso di errori
+          abortOnError: false
+        # Generazione della documentazione
+        documentation:
+          skip: true
+        # Specifiche di deployment
+        deployment:
+          # Tipo di deploy
+          # UNDEFINED: non definito
+          # LIB: libreria che andrà messa in un repository (es. nexus)
+          # RHOS: deploy su RedHat OpenShift
+          # K8S: deploy su kubernetes
+          type: RHOS
+          # Permette di evitare il deploy del modulo
+          deploy: true
+          # Percorso (relativo alla cartella targetDir) del build context dell'immagine.
+          # E' la cartella contenente il dockerFile
+          context: "docker"
+          # Nome del docker file da utilizzare per la creazione dell'immagine
+          # Solo per RHOS e K8S
+          dockerFile: Dockerfile-Backend
+          # Nome del file di deployment
+          # Solo per RHOS e K8S
+          deploymentFile: k8s/be-deployment.yml
+          # Sezione dedicata a verificare se il servizio è online
+          healthCheck:
+            # Endpoint del servizio da chiamare. L'url completo viene calcolato
+            # in fase di deploy
+            relativeUrl:
+      - name: frontend
+        expose: true
+        builder:
+          type: NONE
+        targetDir: "frontend/target"
+        test:
+          skip: true
+          abortOnError: false
+        qualityGate:
+          skip: true
+          abortOnError: false
+        documentation:
+          skip: true
+        deployment:
+          type: RHOS
+          deploy: true
+          context: "docker"
+          dockerFile: Dockerfile-Frontend
+          deploymentFile: k8s/fe-deployment.yml
+          healthCheck:
+            relativeUrl: /rest/v1/public/comuni/
 # Definizione degli ambienti in cui effettuare il deploy
 envs:
-# Tipo di ambiente:
-# TEST: ambiente di test
-# STAGE: ambiente di collaudo
-# PROD: ambiente di produzione
-# UNDEFINED: non definito
-- type: TEST
-  # Permette di saltare il deploy in questo ambiente
-  deploy: true
+  # Tipo di ambiente:
+  # TEST: ambiente di test
+  # STAGE: ambiente di collaudo
+  # PROD: ambiente di produzione
+  # UNDEFINED: non definito
+  - type: TEST
+    # Permette di saltare il deploy in questo ambiente
+    deploy: true
