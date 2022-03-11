@@ -49,7 +49,7 @@ modules:
     # Opzioni del quality gate (Sonarqube)
     qualityGate:
       # Permette di saltare l'analisi del codice
-      skip: true
+      skip: false
       # Permette di bloccare l'esecuzione della pipeline in caso di errori
       abortOnError: false
     # Generazione della documentazione
@@ -100,7 +100,7 @@ modules:
         # Opzioni del quality gate (Sonarqube)
         qualityGate:
           # Permette di saltare l'analisi del codice
-          skip: true
+          skip: false
           # Permette di bloccare l'esecuzione della pipeline in caso di errori
           abortOnError: false
         # Generazione della documentazione
@@ -139,7 +139,7 @@ modules:
           skip: true
           abortOnError: false
         qualityGate:
-          skip: true
+          skip: false
           abortOnError: false
         documentation:
           skip: true
