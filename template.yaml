@@ -120,6 +120,12 @@ spec:
         component_id: "{{ parameters.component_id }}"
         masterName: "{{ parameters.masterName }}"
 
+    - id: krateo:sonarqube
+      name: SonarQube
+      action: krateo:sonarqube
+      input:
+        host: "{{ parameters.repoUrl }}"
+
   output:
     remoteUrl: "{{ steps.publish.output.remoteUrl }}"
     entityRef: "{{ steps.register.output.entityRef }}"
