@@ -125,6 +125,7 @@ spec:
       action: krateo:sonarqube
       input:
         host: "{{ parameters.repoUrl }}"
+        alm: "krateo-github-integration"
 
   output:
     remoteUrl: "{{ steps.publish.output.remoteUrl }}"
