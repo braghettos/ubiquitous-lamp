@@ -48,17 +48,32 @@ spec:
 
     - title: Choose a location
       required:
-        - repoUrl
+        - org
       properties:
-        repoUrl:
-          title: Repository Location
+        gitHubUrl:
+          title: GitHub URL
           type: string
-          ui:field: RepoUrlPicker
-          ui:options:
-            allowedHosts:
-              - github.insiel.it
-              # - github.com
-          default: github.insiel.it
+          description: GitHub URL
+          default: https://github.insiel.it
+          enum:
+            - https://github.insiel.it
+        org:
+          title: Organization
+          type: string
+          description: Organization name
+          default: Innovazione
+          enum:
+            - Innovazione
+            - insiel
+        # repoUrl:
+        #   title: Repository Location
+        #   type: string
+        #   ui:field: RepoUrlPicker
+        #   ui:options:
+        #     allowedHosts:
+        #       - github.insiel.it
+        #       # - github.com
+        #   default: github.insiel.it
         # gitHubUrl:
         #   title: GitHub Api Url
         #   type: string
@@ -78,7 +93,8 @@ spec:
           component_id: "{{ parameters.component_id }}"
           description: "{{ parameters.description }}"
           owner: "{{ parameters.owner }}"
-          destination: "{{ parseRepoUrl parameters.repoUrl }}"
+          destination: "{{ parameters.gitHubUrl }}?owner={{ parameters.org }}&repo={{ parameters.component_id }}"
+          # destination: "{{ parseRepoUrl parameters.repoUrl }}"
 
     - id: publish
       name: Publish
@@ -86,7 +102,8 @@ spec:
       input:
         allowedHosts: ["github.com", "github.insiel.it"]
         description: "This is a Demo App with name {{ parameters.component_id }}"
-        repoUrl: "{{ parameters.repoUrl }}"
+        repoUrl: "{{ parameters.gitHubUrl }}?owner={{ parameters.org }}&repo={{ parameters.component_id }}"
+        # repoUrl: "{{ parameters.repoUrl }}"
         repoVisibility: public
         defaultBranch: main
 
@@ -101,7 +118,8 @@ spec:
       name: Release Orchestration
       action: krateo:ro-insiel
       input:
-        host: "{{ parameters.repoUrl }}"
+        host: "{{ parameters.gitHubUrl }}?owner={{ parameters.org }}&repo={{ parameters.component_id }}"
+        # host: "{{ parameters.repoUrl }}"
         component_id: "{{ parameters.component_id }}"
         gitHubUrl: https://github.insiel.it/api/v3
 
@@ -109,14 +127,16 @@ spec:
       name: Keptn
       action: krateo:keptn-insiel
       input:
-        host: "{{ parameters.repoUrl }}"
+        host: "{{ parameters.gitHubUrl }}?owner={{ parameters.org }}&repo={{ parameters.component_id }}"
+        # host: "{{ parameters.repoUrl }}"
         component_id: "{{ parameters.component_id }}"
 
     - id: krateo:cloudbees-insiel
       name: Cloudbees
       action: krateo:cloudbees-insiel
       input:
-        host: "{{ parameters.repoUrl }}"
+        host: "{{ parameters.gitHubUrl }}?owner={{ parameters.org }}&repo={{ parameters.component_id }}"
+        # host: "{{ parameters.repoUrl }}"
         component_id: "{{ parameters.component_id }}"
         masterName: "{{ parameters.masterName }}"
 
@@ -124,7 +144,8 @@ spec:
       name: SonarQube
       action: krateo:sonarqube
       input:
-        host: "{{ parameters.repoUrl }}"
+        host: "{{ parameters.gitHubUrl }}?owner={{ parameters.org }}&repo={{ parameters.component_id }}"
+        # host: "{{ parameters.repoUrl }}"
         alm: "krateo-github-integration"
 
   output:
