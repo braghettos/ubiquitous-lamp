@@ -121,7 +121,8 @@ spec:
         host: "{{ parameters.gitHubUrl }}?owner={{ parameters.org }}&repo={{ parameters.component_id }}"
         # host: "{{ parameters.repoUrl }}"
         component_id: "{{ parameters.component_id }}"
-        gitHubUrl: https://github.insiel.it/api/v3
+        gitHubUrl: "{{ parameters.gitHubUrl }}/api/v3"
+        # gitHubUrl: https://github.insiel.it/api/v3
 
     - id: krateo:keptn-insiel
       name: Keptn
