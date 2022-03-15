@@ -48,7 +48,7 @@ spec:
 
     - title: Choose a location
       required:
-        - org
+        - repoUrl
       properties:
         # gitHubUrl:
         #   title: GitHub URL
