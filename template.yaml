@@ -1,4 +1,4 @@
-apiVersion: scaffolder.backstage.io/v1beta3
+apiVersion: backstage.io/v1beta2
 kind: Template
 metadata:
   name: ubiquitous-lamp
@@ -151,4 +151,4 @@ spec:
 
   output:
     remoteUrl: "{{ steps.publish.output.remoteUrl }}"
-    # entityRef: "{{ steps.register.output.entityRef }}"
+    entityRef: "{{ steps.register.output.entityRef }}"
