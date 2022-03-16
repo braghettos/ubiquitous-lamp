@@ -1,4 +1,4 @@
-apiVersion: backstage.io/v1beta2
+apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: ubiquitous-lamp
@@ -90,20 +90,20 @@ spec:
       input:
         url: ./skeleton
         values:
-          component_id: "{{ parameters.component_id }}"
-          description: "{{ parameters.description }}"
-          owner: "{{ parameters.owner }}"
-          # destination: "{{ parameters.gitHubUrl }}?owner={{ parameters.org }}&repo={{ parameters.component_id }}"
-          destination: "{{ parseRepoUrl parameters.repoUrl }}"
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+          destination: ${{ parseRepoUrl parameters.repoUrl }}
 
     - id: publish
       name: Publish
       action: publish:github
       input:
-        allowedHosts: ["github.com", "github.insiel.it"]
-        description: "This is a Demo App with name {{ parameters.component_id }}"
-        # repoUrl: "{{ parameters.gitHubUrl }}?owner={{ parameters.org }}&repo={{ parameters.component_id }}"
-        repoUrl: "{{ parameters.repoUrl }}"
+        allowedHosts: 
+          - github.com
+          - github.insiel.it
+        description: This is a Demo App with name ${{ parameters.component_id }}
+        repoUrl: ${{ parameters.repoUrl }}
         repoVisibility: public
         defaultBranch: main
 
@@ -111,44 +111,13 @@ spec:
       name: Register
       action: catalog:register
       input:
-        repoContentsUrl: "{{ steps.publish.output.repoContentsUrl }}"
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
 
-    - id: krateo:ro-insiel
-      name: Release Orchestration
-      action: krateo:ro-insiel
-      input:
-        # host: "{{ parameters.gitHubUrl }}?owner={{ parameters.org }}&repo={{ parameters.component_id }}"
-        host: "{{ parameters.repoUrl }}"
-        component_id: "{{ parameters.component_id }}"
-        # gitHubUrl: "{{ parameters.gitHubUrl }}/api/v3"
-        gitHubUrl: https://github.insiel.it/api/v3
-
-    - id: krateo:keptn-insiel
-      name: Keptn
-      action: krateo:keptn-insiel
-      input:
-        # host: "{{ parameters.gitHubUrl }}?owner={{ parameters.org }}&repo={{ parameters.component_id }}"
-        host: "{{ parameters.repoUrl }}"
-        component_id: "{{ parameters.component_id }}"
-
-    - id: krateo:cloudbees-insiel
-      name: Cloudbees
-      action: krateo:cloudbees-insiel
-      input:
-        # host: "{{ parameters.gitHubUrl }}?owner={{ parameters.org }}&repo={{ parameters.component_id }}"
-        host: "{{ parameters.repoUrl }}"
-        component_id: "{{ parameters.component_id }}"
-        masterName: "{{ parameters.masterName }}"
-
-    - id: krateo:sonarqube
-      name: SonarQube
-      action: krateo:sonarqube
-      input:
-        # host: "{{ parameters.gitHubUrl }}?owner={{ parameters.org }}&repo={{ parameters.component_id }}"
-        host: "{{ parameters.repoUrl }}"
-        alm: "krateo-github-integration"
-
   output:
-    remoteUrl: "{{ steps.publish.output.remoteUrl }}"
-    entityRef: "{{ steps.register.output.entityRef }}"
+    links:
+      - title: Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
