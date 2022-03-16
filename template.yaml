@@ -114,6 +114,36 @@ spec:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
 
+    - id: krateo:ro-insiel
+      name: Release Orchestration
+      action: krateo:ro-insiel
+      input:
+        host: ${{ parameters.repoUrl }}
+        component_id: ${{ parameters.component_id }}
+        gitHubUrl: https://github.insiel.it/api/v3
+
+    - id: krateo:keptn-insiel
+      name: Keptn
+      action: krateo:keptn-insiel
+      input:
+        host: ${{ parameters.repoUrl }}
+        component_id: ${{ parameters.component_id }}
+
+    - id: krateo:cloudbees-insiel
+      name: Cloudbees
+      action: krateo:cloudbees-insiel
+      input:
+        host: ${{ parameters.repoUrl }}
+        component_id: ${{ parameters.component_id }}
+        masterName: ${{ parameters.masterName }}
+
+    - id: krateo:sonarqube
+      name: SonarQube
+      action: krateo:sonarqube
+      input:
+        host: ${{ parameters.repoUrl }}
+        alm: "krateo-github-integration"
+
   output:
     links:
       - title: Repository
