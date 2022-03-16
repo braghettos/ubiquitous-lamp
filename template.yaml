@@ -75,7 +75,6 @@ spec:
       input:
         allowedHosts: 
           - github.com
-          - github.insiel.it
         description: This is a Demo App with name ${{ parameters.component_id }}
         repoUrl: ${{ parameters.repoUrl }}
         repoVisibility: public
