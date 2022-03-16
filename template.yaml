@@ -32,7 +32,6 @@ spec:
           type: string
           description: Owner of the component
           default: innovazione
-
     - title: Cloudbees
       required:
         - masterName
@@ -45,42 +44,17 @@ spec:
           enum:
             - master-01
             - master-02
-
     - title: Choose a location
       required:
         - repoUrl
       properties:
-        # gitHubUrl:
-        #   title: GitHub URL
-        #   type: string
-        #   description: GitHub URL
-        #   default: https://github.insiel.it
-        #   enum:
-        #     - https://github.insiel.it
-        # org:
-        #   title: Organization
-        #   type: string
-        #   description: Organization name
-        #   default: Innovazione
-        #   enum:
-        #     - Innovazione
-        #     - insiel
         repoUrl:
           title: Repository Location
           type: string
           ui:field: RepoUrlPicker
           ui:options:
             allowedHosts:
-              - github.insiel.it
-              # - github.com
-          default: github.insiel.it
-        # gitHubUrl:
-        #   title: GitHub Api Url
-        #   type: string
-        #   enum:
-        #     - https://api.github.com
-        #     - https://github.insiel.it/api/v3
-        #   default: https://github.insiel.it/api/v3
+              - github.com
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
